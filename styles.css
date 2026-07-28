@@ -241,26 +241,48 @@ footer {
     justify-content: center;
 }
 
-.photo-placeholder {
-    width: min(100%, 380px);
-    aspect-ratio: 4 / 5;
+.stats-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.stat-card {
+    min-height: 160px;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    padding: 30px;
-    text-align: center;
-    color: var(--muted);
+    padding: 26px;
     background:
         linear-gradient(
             145deg,
-            rgba(255, 255, 255, 0.06),
+            rgba(255, 255, 255, 0.07),
             rgba(255, 255, 255, 0.02)
         );
-    border: 1px solid rgba(239, 68, 68, 0.45);
-    border-radius: 18px;
-    box-shadow:
-        0 25px 60px rgba(0, 0, 0, 0.35),
-        0 0 35px rgba(239, 68, 68, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+    transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(239, 68, 68, 0.65);
+}
+
+.stat-number {
+    color: var(--accent);
+    font-size: 2.4rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.stat-label {
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 0.95rem;
+    font-weight: 600;
 }
 
 @media (max-width: 800px) {
@@ -290,9 +312,9 @@ footer {
         order: 2;
     }
 
-    .photo-placeholder {
-        width: min(100%, 320px);
-    }
+    .stats-grid {
+    grid-template-columns: 1fr;
+}
 
     .card-grid {
         grid-template-columns: 1fr;
