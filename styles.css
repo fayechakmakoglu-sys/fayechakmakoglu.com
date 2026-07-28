@@ -159,6 +159,8 @@ h3 {
     border-radius: 8px;
     font-weight: 700;
     text-decoration: none;
+
+    transition: all .25s ease;
 }
 
 .button.primary {
@@ -167,10 +169,18 @@ h3 {
 
 .button.primary:hover {
     background: var(--accent-dark);
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 12px 25px rgba(239,68,68,.30);
 }
 
-.button.secondary {
-    border-color: var(--border);
+.button.secondary:hover {
+    background: var(--surface-light);
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 12px 25px rgba(0,0,0,.35);
 }
 
 .button.secondary:hover {
