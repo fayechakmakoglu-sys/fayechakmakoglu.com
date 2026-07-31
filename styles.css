@@ -47,8 +47,15 @@ a {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(11, 17, 32, 0.95);
-    border-bottom: 1px solid var(--border);
+
+    background: rgba(11, 17, 32, 0.72);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    border-bottom: 1px solid rgba(255,255,255,.08);
+
+    transition: all .3s ease;
 }
 
 .site-header .container {
@@ -60,9 +67,16 @@ a {
 }
 
 .logo {
-    font-size: 1.1rem;
-    font-weight: 700;
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: -.03em;
     text-decoration: none;
+
+    transition: color .25s ease;
+}
+
+.logo:hover{
+    color: var(--accent);
 }
 
 nav {
@@ -76,8 +90,34 @@ nav a {
     font-weight: 600;
 }
 
-nav a:hover {
-    color: var(--text);
+nav a:hover{
+    color: white;
+}
+
+nav a{
+    position: relative;
+}
+
+nav a::after{
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:-6px;
+
+    width:0;
+
+    height:2px;
+
+    background:var(--accent);
+
+    transition:width .25s ease;
+}
+
+nav a:hover::after{
+
+    width:100%;
 }
 
 .hero {
