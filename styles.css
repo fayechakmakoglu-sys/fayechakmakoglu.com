@@ -497,6 +497,57 @@ footer {
 
 /* MOBILE */
 
+/* CONTACT BUTTONS */
+
+.contact-links {
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 40px;
+
+}
+
+.contact-button {
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 16px 24px;
+
+    background: var(--surface-light);
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    color: var(--text);
+
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+
+}
+
+.contact-button:hover {
+
+    transform: translateY(-4px);
+
+    background: rgba(239,68,68,.12);
+
+    border-color: var(--accent);
+
+    box-shadow: 0 15px 35px rgba(239,68,68,.20);
+
+}
+
 @media (max-width: 800px) {
     .site-header .container {
         flex-direction: column;
