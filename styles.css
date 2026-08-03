@@ -305,6 +305,55 @@ h3 {
 
 /* GENERAL SECTIONS */
 
+/* QUOTE */
+
+.quote-section {
+
+    padding: 90px 0;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.02),
+            rgba(255,255,255,.01)
+        );
+
+}
+
+.quote-section blockquote {
+
+    max-width: 850px;
+
+    margin: auto;
+
+    font-size: clamp(1.6rem,3vw,2.3rem);
+
+    line-height: 1.6;
+
+    font-weight: 300;
+
+    font-style: italic;
+
+    color: var(--text);
+
+}
+
+.quote-author {
+
+    margin-top: 35px;
+
+    color: var(--accent);
+
+    font-weight: 700;
+
+    letter-spacing: .08em;
+
+    text-transform: uppercase;
+
+}
+
 .section {
     padding: 96px 0;
 }
