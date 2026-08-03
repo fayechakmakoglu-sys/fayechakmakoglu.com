@@ -303,6 +303,37 @@ h3 {
     transform: translateY(-2px);
 }
 
+/* PROFESSIONAL PHILOSOPHY */
+
+.quote-section {
+    padding: 90px 0;
+    text-align: center;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.02),
+            rgba(255, 255, 255, 0.01)
+        );
+}
+
+.quote-section blockquote {
+    max-width: 850px;
+    margin: 0 auto;
+    color: var(--text);
+    font-size: clamp(1.6rem, 3vw, 2.3rem);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.6;
+}
+
+.quote-author {
+    margin-top: 35px;
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
 /* GENERAL SECTIONS */
 
 /* QUOTE */
