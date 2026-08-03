@@ -119,24 +119,51 @@
         </h2>
 
         <p>
-            I was on vacation when I received a phone call from work.
-            A software deployment had gone wrong, resulting in a production
-            database overwrite that affected dozens of healthcare clinics.
-            Electronic Medical Record systems were unavailable, and a large,
-            coordinated recovery effort was beginning.
-        </p>
+    I was on vacation when I received a phone call from work. During a
+    software deployment, a database restore had been performed against the
+    wrong production database, resulting in a production overwrite that
+    affected dozens of healthcare clinics. Electronic Medical Record
+    systems became unavailable, and a large, coordinated recovery effort
+    was immediately launched.
+</p>
 
-        <p>
-            I immediately shifted from vacation mode into incident mode.
-            The priority wasn't simply restoring databases—it was helping
-            restore systems that physicians, nurses, and clinic staff relied
-            on every day to care for patients.
-        </p>
+       <p>
+    I immediately shifted from vacation mode into incident mode,
+    coordinating the database recovery effort and helping guide the work
+    across infrastructure, application, and support teams. The priority
+    wasn't simply restoring databases—it was safely restoring the
+    Electronic Medical Record systems that physicians, nurses, and clinic
+    staff relied on every day to care for patients.
+</p>
 
         <p>
             As more information became available, it was clear this would be
             one of the largest recovery efforts of my career.
         </p>
+
+    <p>
+    The recovery was more complex than simply restoring a single database.
+    Approximately 56 clinic schemas existed within the affected
+    environment, and not every clinic had been impacted by the overwrite.
+    Some remained fully operational, which meant we had to identify
+    exactly which schemas required recovery while ensuring that healthy
+    clinic data was left untouched.
+</p>
+
+<p>
+    Every decision required careful validation. Restoring the wrong schema
+    or recovering data unnecessarily could have introduced additional
+    risk. Accuracy was just as important as speed.
+</p>
+
+<p>
+    The database team quickly came together to develop a structured
+    recovery plan. Working closely with infrastructure, application, and
+    technical support teams, we prioritized affected clinics, coordinated
+    recovery activities, and maintained clear communication throughout the
+    incident so that every team understood the current status and next
+    steps.
+</p> 
 
     </div>
 
@@ -155,18 +182,23 @@
         </h2>
 
         <p>
-            Recovering one production database requires care and validation.
+            Recovering one production database requires care and validation. 
+            There were aproximately 56 production schemas on that databases that needed recovery, validation, and returning it to service. Each schema was critical to the operation of a healthcare clinic, and patient data needed to be protected.
             Recovering dozens requires planning, coordination, and constant
             communication.
         </p>
 
         <p>
-            Every database needed to be restored correctly, validated before
+            Every schema needed to be restored correctly, validated before
             being returned to service, and tracked alongside the work of
             infrastructure, application, and support teams. The challenge
-            wasn't only technical—it was organizational.
+            wasn't only technical—it was organizational. 
+            We took a multi-restore approach, where we restored from DR, placing the standby database into snapshot standby, restoring a Veeam backup to another server, and exorting the data using datapump. 
         </p>
 
+        <p> 
+            We had a team of 5 dbas. Two of them did Datapump Exports from Veeam and DR, and the others ran with the imports into production. 
+        </p>
     </div>
 
 </section>
