@@ -220,6 +220,91 @@
 
 </section>
 
+<section class="section recovery-strategy">
+
+    <div class="container">
+
+        <p class="section-label">
+            Recovery Strategy
+        </p>
+
+        <h2>
+            Multiple recovery paths. One coordinated effort.
+        </h2>
+
+        <p>
+            Because not every clinic schema had been affected, we could not
+            simply restore the entire production database. We needed a
+            controlled process that identified the affected schemas, recovered
+            them from safe sources, validated the data, and returned each clinic
+            to service without disturbing healthy production data.
+        </p>
+
+        <div class="recovery-steps">
+
+            <div class="recovery-step">
+                <span class="step-number">01</span>
+                <h3>Identify Affected Schemas</h3>
+                <p>
+                    Confirm which clinic schemas had been overwritten and which
+                    remained healthy in production.
+                </p>
+            </div>
+
+            <div class="recovery-step">
+                <span class="step-number">02</span>
+                <h3>Establish Recovery Sources</h3>
+                <p>
+                    Use multiple recovery paths, including the disaster recovery
+                    environment and a Veeam backup restored to a separate server.
+                </p>
+            </div>
+
+            <div class="recovery-step">
+                <span class="step-number">03</span>
+                <h3>Prepare DR for Recovery</h3>
+                <p>
+                    Place the standby database into snapshot standby so data
+                    could be recovered safely without disrupting the ongoing
+                    production recovery effort.
+                </p>
+            </div>
+
+            <div class="recovery-step">
+                <span class="step-number">04</span>
+                <h3>Export Clinic Data</h3>
+                <p>
+                    Use Oracle Data Pump to export affected clinic schemas from
+                    the available recovery environments.
+                </p>
+            </div>
+
+            <div class="recovery-step">
+                <span class="step-number">05</span>
+                <h3>Restore in Parallel</h3>
+                <p>
+                    Split the five-person DBA team into parallel work streams,
+                    with DBAs handling exports while others imported recovered
+                    schemas back into production.
+                </p>
+            </div>
+
+            <div class="recovery-step">
+                <span class="step-number">06</span>
+                <h3>Validate Before Release</h3>
+                <p>
+                    Verify each recovered schema before returning the clinic to
+                    service and confirm that unaffected production data remained
+                    untouched.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
 <section class="section">
 
     <div class="container">
