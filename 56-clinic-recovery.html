@@ -134,7 +134,7 @@
     wasn't simply restoring databases—it was safely restoring the
     Electronic Medical Record systems that physicians, nurses, and clinic
     staff relied on every day to care for patients.
-</p>
+</p>   
 
         <p>
             As more information became available, it was clear this would be
@@ -181,24 +181,41 @@
             Recover safely. Recover consistently.
         </h2>
 
-        <p>
-            Recovering one production database requires care and validation. 
-            There were aproximately 56 production schemas on that databases that needed recovery, validation, and returning it to service. Each schema was critical to the operation of a healthcare clinic, and patient data needed to be protected.
-            Recovering dozens requires planning, coordination, and constant
-            communication.
-        </p>
+       <p>
+    Recovering a single production database requires careful validation.
+    In this case, approximately 56 clinic schemas existed within the
+    affected database, and each represented a live healthcare environment.
+    Some schemas required recovery while others remained healthy, so we
+    could not simply restore the entire database and overwrite everything.
+</p>
 
-        <p>
-            Every schema needed to be restored correctly, validated before
-            being returned to service, and tracked alongside the work of
-            infrastructure, application, and support teams. The challenge
-            wasn't only technical—it was organizational. 
-            We took a multi-restore approach, where we restored from DR, placing the standby database into snapshot standby, restoring a Veeam backup to another server, and exorting the data using datapump. 
-        </p>
+<p>
+    We developed a parallel recovery strategy using multiple sources.
+    One recovery stream used the disaster recovery environment, placing
+    the standby database into snapshot standby so that data could be
+    recovered without disrupting the production recovery process.
+    Another stream restored a Veeam backup to a separate server.
+    From those environments, we exported the affected clinic schemas
+    using Oracle Data Pump and imported them individually back into
+    production.
+</p>
 
-        <p> 
-            We had a team of 5 dbas. Two of them did Datapump Exports from Veeam and DR, and the others ran with the imports into production. 
-        </p>
+<p>
+    Our five-person DBA team divided the work so recovery could happen
+    in parallel. Two DBAs focused on Data Pump exports from the Veeam
+    and DR recovery environments, while the remaining DBAs handled
+    imports into production, validation, and returning recovered clinics
+    to service.
+</p>
+
+<p>
+    Every schema had to be tracked carefully. Before anything was
+    restored, we needed to confirm that the clinic had actually been
+    affected, identify the correct recovery source, and ensure that
+    healthy production data was never overwritten. The challenge was
+    not simply moving data quickly—it was performing dozens of precise
+    recoveries without creating a second incident.
+</p>
     </div>
 
 </section>
@@ -216,18 +233,21 @@
         </h2>
 
         <p>
-            I joined the coordinated recovery effort, working with database,
-            infrastructure, application, and support teams to prioritize
-            clinic restores, validate recoveries, and keep everyone aligned
-            as the incident evolved.
-        </p>
+    I helped coordinate the database recovery effort, working across the
+    DBA, infrastructure, application, and technical support teams to keep
+    the recovery organized and moving forward. Within the DBA team, we
+    divided the workload across the available recovery sources, tracked
+    which clinic schemas required action, and coordinated exports,
+    imports, validation, and return-to-service activities.
+</p>
 
-        <p>
-            Throughout the recovery, I focused on remaining calm,
-            communicating clearly, and making sure each clinic was restored
-            safely before moving on to the next. In situations like these,
-            consistency is just as important as speed.
-        </p>
+<p>
+    My focus was on bringing structure to a situation that could easily
+    have become chaotic. We needed to move quickly, but every recovery
+    had to be deliberate and validated. I helped keep the team aligned,
+    identify priorities, communicate progress, and make sure that speed
+    never came at the expense of data integrity.
+</p>
 
     </div>
 
@@ -246,16 +266,19 @@ Recovering service while improving future processes.
 </h2>
 
 <p>
+    The affected clinic schemas were successfully recovered and returned
+    to service without overwriting the clinics that had remained healthy.
+    What began as a large production incident became a coordinated,
+    parallel recovery effort involving multiple backup sources, five DBAs,
+    and close collaboration across several technical teams.
+</p>
 
-The affected clinics were successfully recovered and patient data
-was protected.
-
-The incident also reinforced the importance of recovery planning,
-documentation, communication, and continuous improvement.
-
-Some of the most valuable operational improvements come from
-learning after difficult days.
-
+<p>
+    The incident reinforced something I had learned throughout my career:
+    a backup is only one part of recoverability. Successful recovery also
+    depends on knowing where your data is, having multiple recovery
+    options, documenting the process, validating every step, and having
+    people who can work together calmly when the pressure is high.
 </p>
 
 </div>
